@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.yellow,
+          backgroundColor: Colors.blue,
           title: const Text(
             "Gerador de números aleatórios",
             style: TextStyle(fontWeight: FontWeight.w800),

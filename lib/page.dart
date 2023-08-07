@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.yellow,
+          backgroundColor: Colors.blue,
           title: const Text(
             "Gerador de Números Aleatórios",
             style: TextStyle(color: Colors.black),

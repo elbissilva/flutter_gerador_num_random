@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gerador_num_random/config_page.dart';
 import 'package:flutter_gerador_num_random/page.dart';
 
 import 'package:flutter_gerador_num_random/widgets/imageApp.dart';
@@ -13,7 +14,7 @@ class CustonDrawer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           UserAccountsDrawerHeader(
-              decoration: const BoxDecoration(color: Colors.green),
+              decoration: const BoxDecoration(color: Colors.blue),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Image.asset(ImageAPP.logo),
@@ -40,9 +41,28 @@ class CustonDrawer extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const HomePage()));
             },
           ),
-          const Divider(
-            color: Colors.black,
+          const Divider(color: Colors.black87),
+          InkWell(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              width: double.infinity,
+              child: const Row(
+                children: [
+                  Icon(Icons.settings),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text("Configurações"),
+                ],
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const PageConfig()));
+            },
           ),
+          const Divider(color: Colors.black87),
           InkWell(
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
