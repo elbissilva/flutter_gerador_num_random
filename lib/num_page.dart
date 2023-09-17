@@ -3,20 +3,20 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class NumPage extends StatefulWidget {
+  const NumPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<NumPage> createState() => _NumPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _NumPageState extends State<NumPage> {
   int? numGerado;
-  int? quantidadeCliques = 0;
+  int? quantidadeCliques;
 
-  final CHAVE_NG = "_numAleatório";
+  final CHAVE_NG = "numAleatório";
   final CHAVE_CR = "quantidade_cliques";
-  late SharedPreferences historico;
+  late SharedPreferences storage;
 
   @override
   void initState() {
@@ -26,11 +26,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   void carregarDados() async {
-    historico = await SharedPreferences.getInstance();
-
+    storage = await SharedPreferences.getInstance();
     setState(() {
-      numGerado = historico.getInt(CHAVE_NG);
-      quantidadeCliques = historico.getInt(CHAVE_CR);
+      numGerado = storage.getInt(CHAVE_NG);
+      quantidadeCliques = storage.getInt(CHAVE_CR);
     });
   }
 
@@ -52,6 +51,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               const Text(
                 'Número aleatório gerado:',
+                style: TextStyle(fontSize: 20),
               ),
               Text(
                 numGerado == null
@@ -60,6 +60,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const Text(
                 'Clique realizado:',
+                style: TextStyle(fontSize: 20),
               ),
               Text(
                 quantidadeCliques == null
@@ -71,15 +72,14 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
+            storage = await SharedPreferences.getInstance();
             var random = Random();
-            var contador = quantidadeCliques;
-
             setState(() {
-              numGerado = random.nextInt(100);
-              quantidadeCliques = contador! + 1;
+              numGerado = random.nextInt(1000);
+              quantidadeCliques = (quantidadeCliques ?? 0) + 1;
             });
-            historico.setInt(CHAVE_NG, numGerado!);
-            historico.setInt(CHAVE_CR, quantidadeCliques!);
+            storage.setInt(CHAVE_NG, numGerado!);
+            storage.setInt(CHAVE_CR, quantidadeCliques!);
           },
           child: const Icon(Icons.add),
         ),

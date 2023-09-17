@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gerador_num_random/config_page.dart';
-import 'package:flutter_gerador_num_random/page.dart';
+import 'package:flutter_gerador_num_random/num_page.dart';
 
 import 'package:flutter_gerador_num_random/widgets/imageApp.dart';
 
@@ -38,7 +38,7 @@ class CustonDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HomePage()));
+                  MaterialPageRoute(builder: (context) => const NumPage()));
             },
           ),
           const Divider(color: Colors.black87),
